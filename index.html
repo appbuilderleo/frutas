@@ -139,11 +139,13 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
     .nav-logo-img {
       height: 44px;
       width: auto;
+      max-width: none;
       object-fit: contain;
     }
 
@@ -184,7 +186,8 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      flex-shrink: 0;
     }
 
     .cart-trigger-btn {
@@ -192,13 +195,14 @@
       background: var(--mirtilo-subtle);
       border: 1px solid var(--mirtilo-border);
       color: var(--mirtilo);
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: var(--radius-full);
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
+      white-space: nowrap;
       cursor: pointer;
       transition: all 0.25s var(--ease-smooth);
     }
@@ -212,7 +216,7 @@
     .cart-count-badge {
       background: var(--red);
       color: var(--text-white);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
       padding: 2px 7px;
       border-radius: var(--radius-full);
@@ -223,12 +227,13 @@
       background: var(--whatsapp);
       color: var(--text-white);
       font-weight: 700;
-      font-size: 0.92rem;
-      padding: 10px 20px;
+      font-size: 0.88rem;
+      padding: 9px 18px;
       border-radius: var(--radius-full);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
+      white-space: nowrap;
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
@@ -241,19 +246,14 @@
       box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
     }
 
-    .mobile-menu-btn {
+    .wa-btn-text-short {
       display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--mirtilo);
-      cursor: pointer;
     }
 
     /* 4. HERO CINEMATOGRÁFICO COM SCROLL SCRUB */
     .hero-pinned-container {
       position: relative;
-      height: 750vh;
+      height: 700vh;
       background: #000b21;
     }
 
@@ -261,8 +261,9 @@
       position: sticky;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       height: 100vh;
+      height: 100dvh;
       overflow: hidden;
       background: #000c24;
       display: flex;
@@ -277,10 +278,11 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 0.8s ease;
+      transition: opacity 0.45s ease;
       will-change: transform;
       transform: translateZ(0);
       pointer-events: none;
+      z-index: 2;
     }
 
     .hero-stage.video-ready .hero-video-el {
@@ -296,7 +298,7 @@
       background-position: center;
       background-repeat: no-repeat;
       z-index: 1;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.45s ease;
     }
 
     .hero-stage.video-ready .hero-poster-layer {
@@ -304,7 +306,7 @@
       pointer-events: none;
     }
 
-    /* Hero sem sobreposição escura - Vídeo 100% puro e cristalino */
+    /* Hero sem sobreposição escura: Vídeo 100% puro e cristalino */
     .hero-scrim {
       display: none !important;
     }
@@ -312,22 +314,23 @@
     /* Anel de progresso do carregamento do vídeo */
     .stream-ring-box {
       position: absolute;
-      bottom: 24px;
-      right: 24px;
+      bottom: 18px;
+      right: 18px;
       z-index: 10;
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: rgba(0, 25, 88, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 8px 16px;
+      gap: 10px;
+      background: rgba(0, 25, 88, 0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 6px 14px;
       border-radius: var(--radius-full);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: rgba(255, 255, 255, 0.95);
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
     }
 
     .stream-ring-box.loaded {
@@ -336,8 +339,8 @@
     }
 
     .ring-svg {
-      width: 28px;
-      height: 28px;
+      width: 22px;
+      height: 22px;
       transform: rotate(-90deg);
     }
 
@@ -357,51 +360,7 @@
       transition: stroke-dashoffset 0.1s linear;
     }
 
-    /* HUD flutuante de progresso do hero */
-    .hero-hud {
-      position: absolute;
-      top: 90px;
-      left: 36px;
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      pointer-events: none;
-    }
-
-    .hud-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0, 25, 88, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      padding: 7px 16px;
-      border-radius: var(--radius-full);
-      color: #ffffff;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-    }
-
-    .hud-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 10px var(--red);
-      animation: pulseDot 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    /* Legendas e Textos do Hero (Caption Bands com Acompanhamento Cinético) */
+    /* Legendas e Textos do Hero (Caption Bands sem qualquer card ou fundo) */
     .hero-bands-wrapper {
       position: absolute;
       inset: 0;
@@ -410,17 +369,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 72px 16px 24px;
     }
 
     .caption-band {
       position: absolute;
-      max-width: 980px;
+      max-width: 820px;
       width: 92%;
       text-align: center;
-      padding: 20px;
+      padding: 0;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       opacity: 0;
-      transform: translate3d(0, 30px, 0) scale(0.96);
-      transition: opacity 0.25s linear, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translate3d(0, 24px, 0) scale(0.97);
+      transition: opacity 0.22s linear, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
       will-change: transform, opacity;
     }
@@ -429,259 +394,121 @@
       pointer-events: auto;
     }
 
-    /* Card de vidro fosco suave exclusivo para envolver o texto sem escurecer o vídeo */
     .caption-glass-pill {
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(0, 18, 60, 0.38);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 28px;
-      padding: 34px 44px;
-      box-shadow: 0 16px 45px rgba(0, 10, 35, 0.35);
-      max-width: 900px;
+      max-width: 820px;
       width: 100%;
       margin: 0 auto;
-    }
-
-    .hero-floating-tags {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .hero-chip-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      padding: 5px 14px;
-      border-radius: var(--radius-full);
-      color: #ffffff;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-    }
-
-    .hero-telemetry-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(223, 9, 26, 0.88);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      padding: 6px 16px;
-      border-radius: var(--radius-full);
-      color: #ffffff;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 16px rgba(223, 9, 26, 0.4);
-    }
-
-    .pulse-live {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ffffff;
-      animation: pulseLive 1.6s infinite ease-in-out;
-    }
-
-    @keyframes pulseLive {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.8); }
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
     }
 
     .band-tag {
       display: inline-block;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       color: #ffffff;
-      background: rgba(223, 9, 26, 0.9);
-      padding: 6px 16px;
+      background: var(--red);
+      padding: 5px 14px;
       border-radius: var(--radius-full);
-      margin-bottom: 14px;
-      box-shadow: 0 2px 10px rgba(223, 9, 26, 0.4);
+      margin-bottom: 12px;
+      box-shadow: 0 2px 10px rgba(223, 9, 26, 0.45);
     }
 
     .band-title {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+      font-size: clamp(1.85rem, 4.5vw, 3.6rem);
       font-weight: 900;
       line-height: 1.12;
       color: #ffffff;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       letter-spacing: -0.02em;
-      text-shadow: 0 2px 10px rgba(0, 10, 35, 0.8), 0 4px 24px rgba(0, 10, 35, 0.6);
+      text-shadow: 0 2px 12px rgba(0, 10, 35, 0.9), 0 4px 28px rgba(0, 10, 35, 0.75);
     }
 
     .band-title .highlight-red {
       color: #ff3b4b;
-      text-shadow: 0 0 25px rgba(255, 59, 75, 0.7);
+      text-shadow: 0 2px 14px rgba(0, 10, 35, 0.9), 0 0 22px rgba(255, 59, 75, 0.65);
     }
 
     .band-desc {
-      font-size: clamp(1.05rem, 1.9vw, 1.3rem);
-      color: rgba(255, 255, 255, 0.96);
-      max-width: 65ch;
-      margin: 0 auto 24px;
-      line-height: 1.55;
-      text-shadow: 0 2px 8px rgba(0, 10, 35, 0.7);
-    }
-
-    /* Linha do Tempo / Navegação dos Capítulos da Hero */
-    .hero-timeline-nav {
-      position: absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      background: rgba(0, 20, 65, 0.55);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: 10px 24px;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .timeline-nav-step {
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: var(--radius-full);
-      transition: all 0.25s ease;
-    }
-
-    .timeline-nav-step:hover {
+      font-size: clamp(0.95rem, 1.6vw, 1.18rem);
       color: #ffffff;
-    }
-
-    .timeline-nav-step.active {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .timeline-step-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.4);
-      transition: all 0.25s ease;
-    }
-
-    .timeline-nav-step.active .timeline-step-dot {
-      background: var(--red);
-      transform: scale(1.4);
-      box-shadow: 0 0 10px var(--red);
-    }
-
-    .timeline-divider {
-      width: 20px;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.2);
-    }
+      max-width: 58ch;
+      margin: 0 auto 18px;
+      line-height: 1.5;
+      font-weight: 500;
+      text-shadow: 0 2px 10px rgba(0, 10, 35, 0.92), 0 4px 20px rgba(0, 10, 35, 0.8);
     }
 
     .band-actions {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .btn-hero-primary {
       background: var(--red);
       color: #ffffff;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 14px 28px;
+      font-weight: 700;
+      font-size: 0.84rem;
+      line-height: 1.2;
+      padding: 9px 18px;
       border-radius: var(--radius-full);
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 6px 20px rgba(223, 9, 26, 0.5);
+      justify-content: center;
+      gap: 7px;
+      width: auto;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(223, 9, 26, 0.45);
       transition: all 0.25s var(--ease-smooth);
-      border: 2px solid transparent;
+      border: 1px solid rgba(255, 255, 255, 0.22);
       text-shadow: none;
     }
 
     .btn-hero-primary:hover {
       background: var(--red-hover);
       transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(223, 9, 26, 0.65);
+      box-shadow: 0 8px 22px rgba(223, 9, 26, 0.6);
     }
 
     .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 25, 88, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #ffffff;
-      font-weight: 700;
-      font-size: 1.05rem;
-      padding: 14px 28px;
+      font-weight: 600;
+      font-size: 0.84rem;
+      line-height: 1.2;
+      padding: 9px 18px;
       border-radius: var(--radius-full);
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      justify-content: center;
+      gap: 7px;
+      width: auto;
+      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.4);
       transition: all 0.25s var(--ease-smooth);
       text-shadow: none;
     }
 
     .btn-hero-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(0, 25, 88, 0.78);
       border-color: #ffffff;
       transform: translateY(-2px);
-    }
-
-    .scroll-indicator-cue {
-      position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      pointer-events: none;
-      animation: floatDown 2.2s infinite ease-in-out;
-    }
-
-    @keyframes floatDown {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 8px); }
     }
 
     /* 5. SEÇÃO DESTAQUE / TICKER DE FRESCURA */
@@ -1693,7 +1520,7 @@
       gap: 12px;
     }
 
-    /* 15. RESPONSIVIDADE E GATES DO STATIC-HERO */
+    /* 15. RESPONSIVIDADE E HARMONIA MOBILE */
     @media (max-width: 1024px) {
       .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -1710,27 +1537,117 @@
       .nav-links {
         display: none;
       }
-      .mobile-menu-btn {
-        display: block;
-      }
       .footer-grid {
         grid-template-columns: 1fr;
       }
+      /* Cabeçalho mobile harmonizado: logo em destaque e botões compactos em linha única */
+      .site-nav {
+        padding: 10px 16px;
+      }
+      .site-nav.scrolled {
+        padding: 8px 16px;
+      }
+      .nav-inner {
+        gap: 10px;
+      }
+      .nav-brand {
+        flex-shrink: 0;
+      }
+      .nav-logo-img {
+        height: 38px;
+        width: auto;
+        max-width: none;
+      }
+      .nav-actions {
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .cart-trigger-btn {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        height: 36px;
+        min-height: 36px;
+        gap: 5px;
+      }
+      .cart-count-badge {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+      }
+      .whatsapp-header-btn {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        height: 36px;
+        min-height: 36px;
+        gap: 5px;
+      }
+      .wa-btn-text-full {
+        display: none;
+      }
+      .wa-btn-text-short {
+        display: inline;
+      }
+      /* Hero no mobile: scroll-scrub ativo e fluido com textos e botões proporcionais */
+      .hero-pinned-container {
+        height: 480vh;
+      }
+      .hero-bands-wrapper {
+        padding: 64px 16px 20px;
+      }
+      .band-tag {
+        font-size: 0.68rem;
+        padding: 4px 12px;
+        margin-bottom: 10px;
+      }
+      .band-title {
+        font-size: clamp(1.55rem, 6.2vw, 2.3rem);
+        margin-bottom: 10px;
+      }
+      .band-desc {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+        line-height: 1.45;
+      }
+      .band-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+      .btn-hero-primary,
+      .btn-hero-secondary {
+        font-size: 0.78rem;
+        padding: 8px 15px;
+        gap: 6px;
+        width: auto;
+        min-height: 34px;
+      }
     }
 
-    /* GATES DO STATIC-HERO (Conforme norma 10k-websites) */
-    @media (max-width: 720px),
-           (orientation: portrait) and (max-width: 1024px),
-           (orientation: portrait) and (pointer: coarse),
-           (orientation: landscape) and (pointer: coarse) and (max-height: 560px),
-           (prefers-reduced-motion: reduce) {
+    @media (max-width: 380px) {
+      .site-nav {
+        padding: 8px 12px;
+      }
+      .nav-logo-img {
+        height: 34px;
+      }
+      .cart-trigger-btn,
+      .whatsapp-header-btn {
+        padding: 5px 10px;
+        font-size: 0.74rem;
+        height: 32px;
+        min-height: 32px;
+      }
+    }
+
+    /* Apenas para quem ativa redução de movimento no sistema */
+    @media (prefers-reduced-motion: reduce) {
       .hero-pinned-container {
         height: auto;
       }
       .hero-stage {
         position: relative;
         height: 100vh;
-        min-height: 600px;
+        min-height: 560px;
       }
       .hero-video-el {
         display: none !important;
@@ -1740,9 +1657,6 @@
       }
       .stream-ring-box {
         display: none !important;
-      }
-      .hero-hud {
-        display: none;
       }
       .caption-band {
         position: relative;
@@ -1756,17 +1670,8 @@
     }
 
     @media (max-height: 560px) {
-      .scroll-indicator-cue, .hero-hud, .stream-ring-box {
+      .stream-ring-box {
         display: none !important;
-      }
-    }
-
-    @media (pointer: coarse) {
-      .btn-hero-primary, .btn-hero-secondary, .whatsapp-header-btn, .btn-large-whatsapp, .cat-pill {
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
       }
     }
   </style>
@@ -1790,14 +1695,15 @@
 
       <div class="nav-actions">
         <button class="cart-trigger-btn" id="open-cart-btn" aria-label="Abrir cesto de compras">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
           <span>Pedido</span>
           <span class="cart-count-badge" id="cart-count">0</span>
         </button>
 
         <a href="https://wa.me/258872514554?text=Ol%C3%A1%20Frutas!%20Gostaria%20de%20consultar%20a%20disponibilidade%20de%20frutas%20hoje." target="_blank" rel="noopener noreferrer" class="whatsapp-header-btn" aria-label="Fazer pedido no WhatsApp">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span>Pedir no WhatsApp</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span class="wa-btn-text-full">Pedir no WhatsApp</span>
+          <span class="wa-btn-text-short">WhatsApp</span>
         </a>
       </div>
     </div>
@@ -1810,16 +1716,8 @@
       <!-- Camada Poster Inicial (carrega imediatamente) -->
       <div class="hero-poster-layer" style="background-image: url('assets/hero-poster.webp');"></div>
 
-      <!-- Vídeo Scrubado por Scroll (carregado como Blob sob demanda) -->
-      <video id="hero-video" class="hero-video-el" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
-
-      <!-- Indicador HUD de Origem & Lote -->
-      <div class="hero-hud" aria-hidden="true">
-        <div class="hud-badge">
-          <span class="hud-dot"></span>
-          <span>Lote de Hoje • 100% Fresco</span>
-        </div>
-      </div>
+      <!-- Vídeo Scrubado por Scroll (Desktop e Mobile) -->
+      <video id="hero-video" class="hero-video-el" src="assets/hero-scrub.mp4" preload="auto" muted playsinline webkit-playsinline disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
 
       <!-- Anel de Streaming do Vídeo com fallback -->
       <div class="stream-ring-box" id="stream-box" aria-hidden="true">
@@ -1827,27 +1725,22 @@
           <circle class="ring-circle-bg" cx="24" cy="24" r="20"/>
           <circle class="ring-circle-val" cx="24" cy="24" r="20"/>
         </svg>
-        <span id="stream-label">A preparar experiência...</span>
+        <span id="stream-label">A preparar vídeo...</span>
       </div>
 
-      <!-- Faixas de Legendas e Narrativa do Hero (Caption Bands com Acompanhamento Cinético) -->
+      <!-- Faixas de Legendas e Narrativa do Hero (Sem cards opacos e sem barras sobrepostas) -->
       <div class="hero-bands-wrapper">
         
         <!-- ATO 1: A ORIGEM NA HORTA -->
-        <div class="caption-band" id="band-1" data-range="0.00,0.34" data-ramp="0.05" style="--k: 1; opacity: 1;">
+        <div class="caption-band active" id="band-1" data-range="0.00,0.34" data-ramp="0.05" style="--k: 1; opacity: 1;">
           <div class="caption-glass-pill">
-            <div class="hero-floating-tags">
-              <span class="hero-chip-badge">🌿 Colheita Manual Matinal</span>
-              <span class="hero-chip-badge">☀️ Seleção Fruto a Fruto</span>
-              <span class="hero-chip-badge">🍓 100% Fresco no Pé</span>
-            </div>
             <span class="band-tag">Ato 1 • A Origem</span>
             <h1 class="band-title">Colheita matinal no <span class="highlight-red">ponto exato</span> da fruta.</h1>
             <p class="band-desc">Apanhadas à mão nas melhores hortas e estufas no auge do sabor. Respeitamos o tempo natural para garantir máxima doçura e nutrientes preservados.</p>
             <div class="band-actions">
               <a href="#catalogo" class="btn-hero-primary">
-                <span>Ver Frutas Disponíveis</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <span>Ver Catálogo</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
               <a href="#origem" class="btn-hero-secondary">Como Funciona</a>
             </div>
@@ -1857,20 +1750,11 @@
         <!-- ATO 2: A ROTA CLIMATIZADA -->
         <div class="caption-band" id="band-2" data-range="0.32,0.67" data-ramp="0.05" style="--k: 0; opacity: 0;">
           <div class="caption-glass-pill">
-            <div class="hero-telemetry-badge">
-              <span class="pulse-live"></span>
-              <span>Cadeia de Frio Ativa • 4°C Constantes • Maputo & Matola</span>
-            </div>
-            <div class="hero-floating-tags">
-              <span class="hero-chip-badge">❄️ Frota Climatizada</span>
-              <span class="hero-chip-badge">🚛 Da Horta ao Destino</span>
-              <span class="hero-chip-badge">⚡ Entrega Diária</span>
-            </div>
             <span class="band-tag">Ato 2 • Distribuição Ágil</span>
             <h2 class="band-title">Logística refrigerada. <span class="highlight-red">Direto</span> para o seu negócio.</h2>
             <p class="band-desc">Cadeia de frio contínua da horta ao transporte. Eliminamos intermediários e atrasos para que os produtos cheguem com vigor e textura perfeitos.</p>
             <div class="band-actions">
-              <a href="#logistica" class="btn-hero-secondary">Nossa Rota de Distribuição</a>
+              <a href="#logistica" class="btn-hero-secondary">Rota de Distribuição</a>
             </div>
           </div>
         </div>
@@ -1878,47 +1762,19 @@
         <!-- ATO 3: A CHEGADA E SELEÇÃO FINAL -->
         <div class="caption-band" id="band-3" data-range="0.65,1.00" data-ramp="0.05" style="--k: 0; opacity: 0;">
           <div class="caption-glass-pill">
-            <div class="hero-floating-tags">
-              <span class="hero-chip-badge">🍓 Calibre Superior Selecionado</span>
-              <span class="hero-chip-badge">📦 Caixas Familiares e Comerciais</span>
-              <span class="hero-chip-badge">⭐ Sabor e Frescura Imbatíveis</span>
-            </div>
             <span class="band-tag">Ato 3 • Excelência no Prato</span>
             <h2 class="band-title">Sabor inconfundível. <span class="highlight-red">Peça agora</span> no WhatsApp.</h2>
             <p class="band-desc">Morangos graúdos e frutas frescas selecionadas para supermercados, pastelarias, hotéis ou a sua família. Atendimento rápido e entrega no mesmo dia.</p>
             <div class="band-actions">
               <a href="https://wa.me/258872514554?text=Ol%C3%A1%20Frutas!%20Quero%20fazer%20um%20pedido%20de%20frutas%20frescas." target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
-                <span>Pedir no WhatsApp (+258 87 251 4554)</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span>Pedir no WhatsApp</span>
               </a>
-              <a href="#catalogo" class="btn-hero-secondary">Explorar Catálogo Completo</a>
+              <a href="#catalogo" class="btn-hero-secondary">Ver Catálogo</a>
             </div>
           </div>
         </div>
 
-      </div>
-
-      <!-- Linha do Tempo Interativa de Capítulos da Hero -->
-      <nav class="hero-timeline-nav" id="hero-timeline" aria-label="Capítulos da jornada">
-        <button class="timeline-nav-step active" data-progress="0.05">
-          <span class="timeline-step-dot"></span>
-          <span>01 • Origem na Horta</span>
-        </button>
-        <div class="timeline-divider"></div>
-        <button class="timeline-nav-step" data-progress="0.48">
-          <span class="timeline-step-dot"></span>
-          <span>02 • Rota Climatizada</span>
-        </button>
-        <div class="timeline-divider"></div>
-        <button class="timeline-nav-step" data-progress="0.85">
-          <span class="timeline-step-dot"></span>
-          <span>03 • Sabor & Entrega</span>
-        </button>
-      </nav>
-      <!-- Indicador de Rolagem -->
-      <div class="scroll-indicator-cue" aria-hidden="true">
-        <span>Role para Explorar</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
       </div>
 
     </div>
@@ -2448,22 +2304,20 @@
         return { el, a, b, ramp: Number(el.dataset.ramp || 0.035), op: -1, k: -1 };
       });
 
-      // 2. GATES DO STATIC HERO (5 CONDIÇÕES RIGOROSAS)
+      // 2. GATES DO STATIC HERO (Apenas acessibilidade reduced-motion; mobile tem vídeo com scroll ativo)
       const GATES = [
-        '(max-width: 720px)',
-        '(orientation: portrait) and (max-width: 1024px)',
-        '(orientation: portrait) and (pointer: coarse)',
-        '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
         '(prefers-reduced-motion: reduce)'
       ];
 
       let scrubOn = false;
-      let blobLoaded = false;
+      let videoReady = false;
+      let videoUnlocked = false;
       let rafId = null;
       let targetProgress = 0;
       let shownProgress = 0;
       let lastTick = 0;
       let seekBusy = false;
+      let seekTimer = null;
       let pendingTime = null;
       let heroOnScreen = true;
 
@@ -2471,93 +2325,117 @@
       function getHeroProgress() {
         if (!heroContainer) return 0;
         const rect = heroContainer.getBoundingClientRect();
-        const maxScroll = heroContainer.offsetHeight - window.innerHeight;
+        const viewportH = window.innerHeight || document.documentElement.clientHeight || 1;
+        const maxScroll = heroContainer.offsetHeight - viewportH;
         if (maxScroll <= 0) return 0;
         const scrolled = -rect.top;
         return Math.min(1, Math.max(0, scrolled / maxScroll));
       }
 
-      // 4. FUNÇÕES DE BUSCA E STREAMING DO VÍDEO COMO BLOB
-      async function loadHeroBlob() {
-        if (blobLoaded) return;
-        blobLoaded = true;
+      // 4. PREPARAÇÃO DO VÍDEO PARA DESKTOP E MOBILE (COM DESBLOQUEIO DE DECODER NO TOUCH)
+      function markVideoReady() {
+        if (videoReady) return;
+        videoReady = true;
+        if (heroStage) heroStage.classList.add('video-ready');
+        if (streamBox) streamBox.classList.add('loaded');
+        if (ringCircle) ringCircle.style.strokeDashoffset = 0;
+        if (video && video.duration) {
+          requestSeek(getHeroProgress() * video.duration);
+        }
+      }
 
-        const ctrl = new AbortController();
-        let watchdog = setTimeout(() => ctrl.abort(), 20000);
-
-        try {
-          const res = await fetch(VIDEO_URL, { priority: 'low', signal: ctrl.signal });
-          if (!res.ok) throw new Error('Falha HTTP ' + res.status);
-          
-          const total = Number(res.headers.get('Content-Length')) || VIDEO_BYTES;
-          const reader = res.body.getReader();
-          const chunks = [];
-          let got = 0;
-          let lastRingUpdate = 0;
-
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            clearTimeout(watchdog);
-            watchdog = setTimeout(() => ctrl.abort(), 20000);
-
-            chunks.push(value);
-            got += value.length;
-            const frac = Math.min(1, got / total);
-            const now = performance.now();
-
-            if (now - lastRingUpdate > 80 || frac === 1) {
-              lastRingUpdate = now;
-              const offset = Math.round(126 * (1 - frac));
-              if (ringCircle) ringCircle.style.strokeDashoffset = offset;
-              if (streamLabel) streamLabel.textContent = `A carregar: ${Math.round(frac * 100)}%`;
+      function unlockMobileDecoder() {
+        if (videoUnlocked || !video) return;
+        videoUnlocked = true;
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise.then(() => {
+            video.pause();
+            markVideoReady();
+            if (video.duration) {
+              requestSeek(getHeroProgress() * video.duration);
             }
-          }
-
-          clearTimeout(watchdog);
-          if (ringCircle) ringCircle.style.strokeDashoffset = 0;
-
-          const blob = new Blob(chunks, { type: 'video/mp4' });
-          video.src = URL.createObjectURL(blob);
-          video.load();
-
-          video.addEventListener('canplay', () => {
-            heroStage.classList.add('video-ready');
-            if (streamBox) streamBox.classList.add('loaded');
-            requestSeek(getHeroProgress() * (video.duration || 1));
-          }, { once: true });
-
-        } catch (err) {
-          // Fallback para still image se o vídeo falhar
-          if (streamBox) streamBox.classList.add('loaded');
-          heroStage.classList.add('video-failed');
+          }).catch(() => {
+            videoUnlocked = false;
+          });
         }
       }
 
-      // 5. GATED SEEK PATTERN (ANTI-DEADLOCK)
-      function requestSeek(t) {
-        if (!video || !video.duration || isNaN(t)) return;
-        if (seekBusy) {
-          pendingTime = t;
-          return;
+      function initHeroVideo() {
+        if (!video) return;
+        video.muted = true;
+        video.playsInline = true;
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+
+        if (video.readyState >= 1) {
+          markVideoReady();
+          unlockMobileDecoder();
         }
-        seekBusy = true;
-        video.currentTime = Math.min(video.duration, Math.max(0, t));
+
+        video.addEventListener('loadedmetadata', () => {
+          markVideoReady();
+          unlockMobileDecoder();
+        });
+
+        video.addEventListener('loadeddata', markVideoReady);
+        video.addEventListener('canplay', markVideoReady);
+
+        // Atualiza anel de buffer caso ainda esteja a carregar
+        video.addEventListener('progress', () => {
+          if (videoReady || !video.duration || !video.buffered.length) return;
+          const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+          const frac = Math.min(1, bufferedEnd / video.duration);
+          const offset = Math.round(126 * (1 - frac));
+          if (ringCircle) ringCircle.style.strokeDashoffset = offset;
+        });
+
+        // Desbloqueia decoder no primeiro toque em ecrãs mobile (iOS Safari / Android Chrome)
+        window.addEventListener('touchstart', unlockMobileDecoder, { passive: true, once: true });
       }
 
-      video.addEventListener('seeked', () => {
+      // 5. GATED SEEK PATTERN COM WATCHDOG ANTI-DEADLOCK (ESSENCIAL PARA MOBILE)
+      function releaseSeekLock() {
+        if (seekTimer) {
+          clearTimeout(seekTimer);
+          seekTimer = null;
+        }
         seekBusy = false;
         if (pendingTime !== null) {
           const next = pendingTime;
           pendingTime = null;
           requestSeek(next);
         }
-      });
+      }
 
-      video.addEventListener('error', () => {
-        seekBusy = false;
-        pendingTime = null;
-      });
+      function requestSeek(t) {
+        if (!video || !video.duration || isNaN(t)) return;
+        const clamped = Math.min(video.duration - 0.01, Math.max(0, t));
+        if (Math.abs((video.currentTime || 0) - clamped) < 0.015) return;
+
+        if (seekBusy) {
+          pendingTime = clamped;
+          return;
+        }
+        seekBusy = true;
+        if (seekTimer) clearTimeout(seekTimer);
+        seekTimer = setTimeout(releaseSeekLock, 90);
+
+        try {
+          video.currentTime = clamped;
+        } catch (e) {
+          releaseSeekLock();
+        }
+      }
+
+      if (video) {
+        video.addEventListener('seeked', releaseSeekLock);
+        video.addEventListener('error', () => {
+          if (seekTimer) clearTimeout(seekTimer);
+          seekBusy = false;
+          pendingTime = null;
+        });
+      }
 
       // 6. SUAVIZAÇÃO FRAME-RATE INDEPENDENT (dt-LERP)
       function smoothstep(p, e0, e1) {
@@ -2567,14 +2445,6 @@
       }
 
       function updateCaptions(p) {
-        // Atualiza a barra de navegação dos capítulos conforme o vídeo avança
-        const stepIdx = p < 0.33 ? 0 : (p < 0.67 ? 1 : 2);
-        const timelineSteps = document.querySelectorAll('.timeline-nav-step');
-        timelineSteps.forEach((s, idx) => {
-          s.classList.toggle('active', idx === stepIdx);
-        });
-
-        // Atualiza cada bloco de texto com movimentação imersiva contínua
         bands.forEach((b, index) => {
           let op = 0;
           let k = 0;
@@ -2596,18 +2466,15 @@
 
             // Movimentação que acompanha o vídeo de forma imersiva
             if (index === 0) {
-              // Ato 1: Acompanha a colheita no campo com suave flutuação vertical
-              translateY = (1 - progressInBand) * 36 - 18;
-              scale = 0.96 + 0.04 * Math.sin(progressInBand * Math.PI);
+              translateY = (1 - progressInBand) * 32 - 14;
+              scale = 0.97 + 0.03 * Math.sin(progressInBand * Math.PI);
             } else if (index === 1) {
-              // Ato 2: Acompanha o deslocamento do caminhão na estrada
-              translateX = (progressInBand - 0.5) * 50;
-              translateY = (1 - Math.sin(progressInBand * Math.PI)) * 12;
+              translateX = (progressInBand - 0.5) * 32;
+              translateY = (1 - Math.sin(progressInBand * Math.PI)) * 10;
               scale = 0.97 + 0.03 * Math.sin(progressInBand * Math.PI);
             } else {
-              // Ato 3: Chegada e revelação das frutas com zoom suave e foco
-              translateY = (1 - Math.min(1, progressInBand * 1.8)) * 28;
-              scale = 0.95 + 0.05 * Math.min(1, progressInBand * 1.5);
+              translateY = (1 - Math.min(1, progressInBand * 1.8)) * 22;
+              scale = 0.96 + 0.04 * Math.min(1, progressInBand * 1.5);
             }
           }
 
@@ -2638,7 +2505,7 @@
       function tick(now) {
         const dt = Math.min(100, now - (lastTick || now));
         lastTick = now;
-        const k = 0.18; // Smoothing factor
+        const k = 0.22; // Resposta fluida tanto no rato quanto no deslizar do dedo no mobile
         shownProgress += (targetProgress - shownProgress) * (1 - Math.pow(1 - k, dt / 16.667));
 
         if (Math.abs(targetProgress - shownProgress) < 0.0005) {
@@ -2661,7 +2528,6 @@
           rafId = requestAnimationFrame(tick);
         }
 
-        // Navbar blur effect
         if (window.scrollY > 50) {
           navbar.classList.add('scrolled');
         } else {
@@ -2679,17 +2545,21 @@
               rafId = null;
             }
           });
-        }, { threshold: 0.02 });
+        }, { threshold: 0.01 });
         if (heroContainer) heroObs.observe(heroContainer);
       }
 
-      // 7. GESTÃO DINÂMICA DE MODO (SCRUB vs STATIC HERO)
+      // 7. GESTÃO DINÂMICA DE MODO (SCRUB ATIVO EM DESKTOP E MOBILE)
       function enableScrub() {
         if (scrubOn) return;
         scrubOn = true;
-        loadHeroBlob();
+        initHeroVideo();
         window.addEventListener('scroll', onScroll, { passive: true });
-        updateCaptions(getHeroProgress());
+        window.addEventListener('touchmove', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+        shownProgress = getHeroProgress();
+        targetProgress = shownProgress;
+        updateCaptions(shownProgress);
         onScroll();
       }
 
@@ -2697,6 +2567,8 @@
         if (!scrubOn) return;
         scrubOn = false;
         window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('touchmove', onScroll);
+        window.removeEventListener('resize', onScroll);
         if (rafId !== null) {
           cancelAnimationFrame(rafId);
           rafId = null;
@@ -2715,18 +2587,6 @@
       const mqls = GATES.map(q => window.matchMedia(q));
       mqls.forEach(m => m.addEventListener('change', applyHeroMode));
       applyHeroMode();
-      // Navegação por clique nos capítulos da Hero
-      document.querySelectorAll('.timeline-nav-step').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const targetProg = parseFloat(btn.dataset.progress || '0');
-          if (heroContainer) {
-            const maxScroll = heroContainer.offsetHeight - window.innerHeight;
-            const targetY = heroContainer.offsetTop + (targetProg * maxScroll);
-            window.scrollTo({ top: targetY, behavior: 'smooth' });
-          }
-        });
-      });
-
 
       // Pausa animações quando a aba fica em segundo plano
       document.addEventListener('visibilitychange', () => {
